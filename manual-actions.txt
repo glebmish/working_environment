@@ -1,0 +1,5 @@
+# set zsh as default shell
+chsh -s /bin/zsh
+
+# set source code pro font in terminal
+Terminal -> Preferences -> Profiles -> Edit -> Custom font -> Source Code Pro Medium

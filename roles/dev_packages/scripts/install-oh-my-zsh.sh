@@ -1,5 +1,6 @@
 #!/bin/sh
-if [ ! -d "$1/.oh-my-zsh" ] 
+if [ ! -f "$1/.oh-my-zsh/oh-my-zsh.sh" ] 
 then
-  curl -L http://install.ohmyz.sh | sh
+  su $2 --command "curl -L http://install.ohmyz.sh | sh"
 fi
+exit 0
