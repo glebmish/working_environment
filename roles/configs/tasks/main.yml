@@ -1,0 +1,4 @@
+---
+# This role makes links on all configs from resources to appropriate places
+ - name: Link git config
+   file: src="{{ playbook_dir }}/roles/configs/resources/.gitconfig" dest="{{ homedir }}/.gitconfig" state=link

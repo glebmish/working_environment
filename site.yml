@@ -4,6 +4,9 @@
   remote_user: root
   become: yes
   become_method: sudo
+  vars:
+    homedir: /home/gleb
 
   roles:
   - role: dev_packages
+  - role: configs
