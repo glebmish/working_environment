@@ -1,0 +1,10 @@
+---
+- name: Set up whole working environment on Ubuntu
+  hosts: localhost
+  remote_user: root
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: Install git
+    apt: name=git state=latest
