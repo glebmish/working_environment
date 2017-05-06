@@ -36,7 +36,7 @@
    shell: "{{ playbook_dir }}/roles/dev_packages/scripts/install-oh-my-zsh.sh {{ homedir }} {{ username }}" 
    changed_when: False
  - name: Install Source Code Pro font
-   shell: "{{ playbook_dir }}/roles/dev_packages/scripts/install-source-code-pro-fonts.sh" 
+   copy: src="{{ playbook_dir }}/roles/dev_packages/resources/SourceCodeProFonts" dest="/usr/share/fonts"
  - name: Install powerline9k theme
    git: clone=yes repo=https://github.com/bhilburn/powerlevel9k.git dest="{{ homedir }}/.oh-my-zsh/custom/themes/powerlevel9k"  
 
