@@ -1,16 +1,25 @@
 ---
 # This role install basic packages for development
  - name: Install git
-   apt: name=git state=latest
+   apt: name=git
  - name: Install vim
-   apt: name=vim state=latest
+   apt: name=vim
 
  - name: Install gcc-4.8
-   apt: name=gcc-4.8 state=latest
- - name: gcc-4.8 as default gcc
-   alternatives: name=gcc path=/usr/bin/gcc-4.8
+   apt: name=gcc-4.8
+ - name: Update alternatives gcc
+   alternatives: name=gcc path=/usr/bin/gcc-4.8 link=/usr/bin/gcc
 
  - name: Install g++-4.8
-   apt: name=g++-4.8 state=latest
- - name: g++-4.8 as default g++
-   alternatives: name=g++ path=/usr/bin/g++-4.8
+   apt: name=g++-4.8
+ - name: Update alternatives g++
+   alternatives: name=g++ path=/usr/bin/g++-4.8 link=/usr/bin/g++
+
+ - name: Add java repository
+   apt_repository: repo=ppa:webupd8team/java
+ - name: Agree with oracle license
+   shell: echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+ - name: Install java 8
+   apt: name=oracle-java8-installer
+ - name: Set java defaults
+   apt: name=oracle-java8-set-default
