@@ -1,4 +1,6 @@
 ---
 # This role makes links on all configs from resources to appropriate places
- - name: Link git config
+ - name: Link .gitconfig
    file: src="{{ playbook_dir }}/roles/configs/resources/.gitconfig" dest="{{ homedir }}/.gitconfig" state=link
+ - name: Link .vimrc
+   file: src="{{ playbook_dir }}/roles/configs/resources/.vimrc" dest="{{ homedir }}/.vimrc" state=link

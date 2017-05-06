@@ -6,6 +6,8 @@
   become_method: sudo
   vars:
     homedir: /home/gleb
+    username: gleb
+    ubuntu: xenial
 
   roles:
   - role: dev_packages
