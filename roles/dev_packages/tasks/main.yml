@@ -33,10 +33,11 @@
  - name: Install zsh
    apt: name=zsh
  - name: Install oh-my-zsh
-   shell: curl -L http://install.ohmyz.sh | sh
+   shell: "{{ playbook_dir }}/roles/dev_packages/scripts/install-oh-my-zsh.sh {{ homedir }}" 
    changed_when: False
  - name: Change default shell
-   shell: chsh -s /bin/zsh
+   shell: "{{ playbook_dir }}/roles/dev_packages/scripts/change-default-shell.sh" 
+   changed_when: False
 
  - name: Install docker deps 1/4
    apt: name=apt-transport-https
@@ -60,13 +61,13 @@
  - name: Enable docker to start on boot
    systemd: name=docker enabled=yes state=started
  - name: Install docker-compose
-   shell: curl -L https://github.com/docker/compose/releases/download/1.12.0/docker-compose-Linux-x86_64 > /usr/local/bin/docker-compose
+   shell: "{{ playbook_dir }}/roles/dev_packages/scripts/install-docker-compose.sh" 
    changed_when: False
  - name: Give execution permissions to binary
    file: path=/usr/local/bin/docker-compose mode=777
  - name: Create directory for zsh completions
    file: path="{{homedir}}/.oh-my-zsh/completion/" state=directory
  - name: Install docker-compose zsh autocompletion
-   shell: curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/zsh/_docker-compose > "{{homedir}}/.oh-my-zsh/completion/_docker-compose"
+   shell: "{{ playbook_dir }}/roles/dev_packages/scripts/install-docker-compose-autocompletion.sh {{ homedir }}" 
    changed_when: False
    
