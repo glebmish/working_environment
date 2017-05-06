@@ -4,3 +4,5 @@
    file: src="{{ playbook_dir }}/roles/configs/resources/.gitconfig" dest="{{ homedir }}/.gitconfig" state=link
  - name: Link .vimrc
    file: src="{{ playbook_dir }}/roles/configs/resources/.vimrc" dest="{{ homedir }}/.vimrc" state=link
+ - name: Link .zshrc
+   file: src="{{ playbook_dir }}/roles/configs/resources/.zshrc" dest="{{ homedir }}/.zshrc" state=link

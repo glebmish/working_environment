@@ -30,6 +30,14 @@
  - name: Set java defaults
    apt: name=oracle-java8-set-default
 
+ - name: Install zsh
+   apt: name=zsh
+ - name: Install oh-my-zsh
+   shell: curl -L http://install.ohmyz.sh | sh
+   changed_when: False
+ - name: Change default shell
+   shell: chsh -s /bin/zsh
+
  - name: Install docker deps 1/4
    apt: name=apt-transport-https
  - name: Install docker deps 2/4
