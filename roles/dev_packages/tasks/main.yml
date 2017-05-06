@@ -2,8 +2,13 @@
 # This role install basic packages for development
  - name: Install git
    apt: name=git
+
  - name: Install vim
    apt: name=vim
+ - name: Create directory for vim colors
+   file: path="{{homedir}}/.vim/colors/" state=directory
+ - name: Install vim color scheme
+   get_url: url=https://raw.githubusercontent.com/vim-scripts/256-jungle/master/colors/256-jungle.vim dest="{{ homedir }}/.vim/colors/256-jungle.vim"
 
  - name: Install gcc-4.8
    apt: name=gcc-4.8
@@ -40,6 +45,8 @@
    apt_repository: repo="deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ubuntu }}  stable"
  - name: Install docker
    apt: name=docker-ce
+ - name: Create docker group
+   group: name=docker state=present system=yes
  - name: Add user to docker group
    user: name="{{ username }}" group=docker
  - name: Enable docker to start on boot
