@@ -24,3 +24,34 @@
    apt: name=oracle-java8-installer
  - name: Set java defaults
    apt: name=oracle-java8-set-default
+
+ - name: Install docker deps 1/4
+   apt: name=apt-transport-https
+ - name: Install docker deps 2/4
+   apt:  name=ca-certificates
+ - name: Install docker deps 3/4
+   apt: name=curl
+ - name: Install docker deps 4/4
+   apt: name=software-properties-common
+ - name: Add docker PGP key
+   shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+   changed_when: False
+ - name: Add docker repository
+   apt_repository: repo="deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ubuntu }}  stable"
+ - name: Install docker
+   apt: name=docker-ce
+ - name: Add user to docker group
+   user: name="{{ username }}" group=docker
+ - name: Enable docker to start on boot
+   systemd: name=docker enabled=yes state=started
+ - name: Install docker-compose
+   shell: curl -L https://github.com/docker/compose/releases/download/1.12.0/docker-compose-Linux-x86_64 > /usr/local/bin/docker-compose
+   changed_when: False
+ - name: Give execution permissions to binary
+   file: path=/usr/local/bin/docker-compose mode=777
+ - name: Create directory for zsh completions
+   file: path="{{homedir}}/.oh-my-zsh/completion/" state=directory
+ - name: Install docker-compose zsh autocompletion
+   shell: curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/zsh/_docker-compose > "{{homedir}}/.oh-my-zsh/completion/_docker-compose"
+   changed_when: False
+   
