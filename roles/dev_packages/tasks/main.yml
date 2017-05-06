@@ -3,6 +3,9 @@
  - name: Install git
    apt: name=git
 
+ - name: Install curl
+   apt: name=curl
+
  - name: Install vim
    apt: name=vim
  - name: Create directory for vim colors
