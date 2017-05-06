@@ -1,0 +1,7 @@
+---
+# This role install basic packages for development
+ - name: Install git
+   apt: name=git state=latest
+ - name: Install vim
+   apt: name=vim state=latest
+

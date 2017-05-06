@@ -5,6 +5,5 @@
   become: yes
   become_method: sudo
 
-  tasks:
-  - name: Install git
-    apt: name=git state=latest
+  roles:
+  - role: dev_packages
