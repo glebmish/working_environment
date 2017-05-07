@@ -41,6 +41,14 @@
  - name: Install gradle
    apt: name=gradle
 
+ - name: Install postgres
+   apt: name=postgresql
+ - name: Change psql authentification method
+   shell: sed -i '/local   all             postgres/c\local   all             postgres                                trust' /etc/postgresql/9.5/main/pg_hba.conf
+   changed_when: False
+ - name: Restart postgres service
+   systemd: name=docker enabled=yes state=restarted
+
  - name: Install zsh
    apt: name=zsh
  - name: Install oh-my-zsh
