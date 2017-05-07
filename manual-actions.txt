@@ -3,3 +3,7 @@ chsh -s /bin/zsh
 
 # set source code pro font in terminal
 Terminal -> Preferences -> Profiles -> Edit -> Custom font -> Source Code Pro Medium
+
+# idea desktop and cli entries
+choose config folder ~/.IntelliJIdeaConfig
+in idea: Tools -> Create cli; Tools -> Create desktop
