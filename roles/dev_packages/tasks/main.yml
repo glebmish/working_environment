@@ -33,6 +33,11 @@
  - name: Set java defaults
    apt: name=oracle-java8-set-default
 
+ - name: Install maven
+   apt: name=maven
+ - name: Install gradle
+   apt: name=gradle
+
  - name: Install zsh
    apt: name=zsh
  - name: Install oh-my-zsh
