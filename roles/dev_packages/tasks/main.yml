@@ -94,4 +94,12 @@
  - name: Install docker-compose zsh autocompletion
    shell: "{{ playbook_dir }}/roles/dev_packages/scripts/install-docker-compose-autocompletion.sh {{ homedir }}" 
    changed_when: False
-   
+ 
+ - name: Add google repository key
+   shell: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+   changed_when: False
+ - name: Add google repository
+   shell: sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
+   changed_when: False
+ - name: Install google chrome
+   apt: sudo apt install google-chrome-stable 
