@@ -1,17 +1,11 @@
 ---
 # This role makes links on all configs from resources to appropriate places
- - name: Delete old .gitconfig
-   file: path="{{ homedir }}/.gitconfig" state=absent
  - name: Link .gitconfig
    file: src="{{ playbook_dir }}/roles/configs/resources/.gitconfig" dest="{{ homedir }}/.gitconfig" state=link
 
- - name: Delete old .vimrc
-   file: path="{{ homedir }}/.vimrc" state=absent
  - name: Link .vimrc
    file: src="{{ playbook_dir }}/roles/configs/resources/.vimrc" dest="{{ homedir }}/.vimrc" state=link
 
- - name: Delete old .zshrc
-   file: path="{{ homedir }}/.zshrc" state=absent
  - name: Link .zshrc
    file: src="{{ playbook_dir }}/roles/configs/resources/.zshrc" dest="{{ homedir }}/.zshrc" state=link
 

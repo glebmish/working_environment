@@ -30,7 +30,8 @@
    apt_repository: repo=ppa:webupd8team/java
  - name: Agree with oracle license
    shell: "{{ playbook_dir }}/roles/dev_packages/scripts/oracle-licence.sh oracle-java8-installer" 
-   changed_when: False
+   register: oracle_license_res
+   changed_when: "oracle_license_res.stdout == 'changed'"
  - name: Install java 8
    apt: name=oracle-java8-installer
  - name: Set java defaults
@@ -43,26 +44,30 @@
 
  - name: Install postgresql
    apt: name=postgresql
+   register: install_postgresql_res
  - name: Change psql authentification method
    shell: sed -i '/local   all             postgres/c\local   all             postgres                                trust' /etc/postgresql/9.5/main/pg_hba.conf
    changed_when: False
+   register: chage_psql_conf_res
+   when: "install_postgresql_res.changed == 'true'"
  - name: Restart postgres service
    systemd: name=docker enabled=yes state=restarted
+   when: "chage_psql_conf_res.changed == 'true'"
 
  - name: Install zsh
    apt: name=zsh
  - name: Install oh-my-zsh
    shell: "{{ playbook_dir }}/roles/dev_packages/scripts/install-oh-my-zsh.sh {{ homedir }} {{ username }}" 
-   changed_when: False
+   register: install_omz_res
+   changed_when: "install_omz_res.stdout == 'changed'"
  - name: Install zsh-autosuggestion plugin
-   git: clone=yes repo=https://github.com/zsh-users/zsh-autosuggestions.git dest="{{ homedir }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+   git: clone=yes repo=https://github.com/zsh-users/zsh-autosuggestions.git dest="{{ homedir }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions" update=no
  - name: Install zsh-syntax-highligting plugin  
-   git: clone=yes repo=https://github.com/zsh-users/zsh-syntax-highlighting.git dest="{{ homedir }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+   git: clone=yes repo=https://github.com/zsh-users/zsh-syntax-highlighting.git dest="{{ homedir }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" update=no
  - name: Install Source Code Pro fonts
    copy: src="{{ playbook_dir }}/roles/dev_packages/resources/SourceCodeProFonts" dest="/usr/share/fonts"
  - name: Install powerline9k theme
-   git: clone=yes repo=https://github.com/bhilburn/powerlevel9k.git dest="{{ homedir }}/.oh-my-zsh/custom/themes/powerlevel9k"  
-
+   git: clone=yes repo=https://github.com/bhilburn/powerlevel9k.git dest="{{ homedir }}/.oh-my-zsh/custom/themes/powerlevel9k" update=no
  - name: Install docker deps 1/4
    apt: name=apt-transport-https
  - name: Install docker deps 2/4
@@ -72,8 +77,7 @@
  - name: Install docker deps 4/4
    apt: name=software-properties-common
  - name: Add docker PGP key
-   shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-   changed_when: False
+   apt_key: url=https://download.docker.com/linux/ubuntu/gpg state=present
  - name: Add docker repository
    apt_repository: repo="deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ubuntu }}  stable"
  - name: Install docker
@@ -85,28 +89,32 @@
  - name: Enable docker to start on boot
    systemd: name=docker enabled=yes state=started
  - name: Install docker-compose
-   shell: "{{ playbook_dir }}/roles/dev_packages/scripts/install-docker-compose.sh" 
-   changed_when: False
+   get_url: url=https://github.com/docker/compose/releases/download/1.12.0/docker-compose-Linux-x86_64 dest=/usr/local/bin/docker-compose
  - name: Give execution permissions to binary
    file: path=/usr/local/bin/docker-compose mode=777
  - name: Create directory for zsh completions
    file: path="{{homedir}}/.oh-my-zsh/completion/" state=directory
- - name: Install docker-compose zsh autocompletion
-   shell: "{{ playbook_dir }}/roles/dev_packages/scripts/install-docker-compose-autocompletion.sh {{ homedir }}" 
+ - name: Get docker-compose version
+   shell: docker-compose version --short
+   register: docker_compose_ver
    changed_when: False
+ - name: Install docker-compose zsh autocompletion
+   get_url: url="https://raw.githubusercontent.com/docker/compose/{{ docker_compose_ver.stdout }}/contrib/completion/zsh/_docker-compose" dest="{{ homedir }}/.oh-my-zsh/completion/_docker-compose"
  
  - name: Add google repository key
-   shell: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-   changed_when: False
+   apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
  - name: Add google repository
-   shell: sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
-   changed_when: False
+   apt_repository: repo="deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
+   register: add_google_repo_res
  - name: Install google chrome
    apt: name=google-chrome-stable update_cache=yes
+   when: "add_google_repo_res.changed == 'true'"
 
  - name: Make directory for programs
    file: path="{{ homedir }}/Programs" state=directory
  - name: Download Idea
    get_url: url=https://download.jetbrains.com/idea/ideaIU-2017.1.2.tar.gz dest="{{ homedir }}/Downloads/ideaIU-2017.1.2.tar.gz"
+   register: download_idea_res
  - name: Install Idea
    unarchive: src="{{ homedir }}/Downloads/ideaIU-2017.1.2.tar.gz" dest="{{ homedir }}/Programs/"
+   when: "download_idea_res.changed == 'true'"
