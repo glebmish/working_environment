@@ -103,3 +103,10 @@
    changed_when: False
  - name: Install google chrome
    apt: name=google-chrome-stable update_cache=yes
+
+ - name: Make directory for programs
+   file: path="{{ homedir }}/Programs" state=directory
+ - name: Download Idea
+   get_url: url=https://download.jetbrains.com/idea/ideaIU-2017.1.2.tar.gz dest="{{ homedir }}/Downloads/ideaIU-2017.1.2.tar.gz"
+ - name: Install Idea
+   unarchive: src="{{ homedir }}/Downloads/ideaIU-2017.1.2.tar.gz" dest="{{ homedir }}/Programs/"

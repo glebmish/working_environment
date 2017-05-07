@@ -14,3 +14,10 @@
    file: path="{{ homedir }}/.zshrc" state=absent
  - name: Link .zshrc
    file: src="{{ playbook_dir }}/roles/configs/resources/.zshrc" dest="{{ homedir }}/.zshrc" state=link
+
+ - name: Make directory for Idea configs
+   file: path="{{ homedir }}//.IntelliJIdeaConfig/" state=directory
+ - name: Link Idea configs 1/2
+   file: src="{{ playbook_dir }}/roles/configs/resources/idea/options" dest="{{ homedir }}/.IntelliJIdeaConfig/options" state=link
+ - name: Link Idea configs 2/2
+   file: src="{{ playbook_dir }}/roles/configs/resources/idea/plugins" dest="{{ homedir }}/.IntelliJIdeaConfig/plugins" state=link

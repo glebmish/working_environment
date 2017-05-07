@@ -1,0 +1,205 @@
+<application>
+  <component name="RecentProjectsManager">
+    <option name="recentPaths">
+      <list>
+        <option value="$USER_HOME$/source/qatool" />
+        <option value="$USER_HOME$/source/netcracker/museum-guide" />
+        <option value="$USER_HOME$/source/netcracker/db-test" />
+        <option value="$USER_HOME$/source/netcracker/DB-test" />
+        <option value="$USER_HOME$/source/netcracker/test-project" />
+        <option value="$USER_HOME$/source/adsadas" />
+        <option value="$USER_HOME$/source/scripts" />
+        <option value="$USER_HOME$/source/hw" />
+        <option value="$USER_HOME$/source/compresser" />
+        <option value="$USER_HOME$/source/qatool/multyThreadTest" />
+      </list>
+    </option>
+    <option name="openPaths">
+      <list>
+        <option value="$USER_HOME$/source/qatool" />
+      </list>
+    </option>
+    <option name="lastPath" value="$USER_HOME$/source/qatool" />
+    <option name="additionalInfo">
+      <map>
+        <entry key="$USER_HOME$">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-163.11103.6" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1485464511573" />
+              <option name="buildTimestamp" value="1484600618911" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/source">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-163.11103.6" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1485782994033" />
+              <option name="buildTimestamp" value="1484600590762" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/source/adsadas">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-163.12024.16" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1489072466113" />
+              <option name="buildTimestamp" value="1485857116984" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/source/compresser">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-163.12024.16" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1486924583435" />
+              <option name="buildTimestamp" value="1485857116955" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/source/hw">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-163.12024.16" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1488184942093" />
+              <option name="buildTimestamp" value="1485857113591" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/source/jcom">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-163.11103.6" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1486238954950" />
+              <option name="buildTimestamp" value="1484600582892" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/source/jcomex">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-163.11103.6" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1486230633862" />
+              <option name="buildTimestamp" value="1484600589461" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/source/netcracker/DB-test">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-163.12024.16" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1491252364653" />
+              <option name="buildTimestamp" value="1485857120603" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/source/netcracker/db-test">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-163.12024.16" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1491633928315" />
+              <option name="buildTimestamp" value="1485857117362" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/source/netcracker/museum-guide">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-163.12024.16" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1493941561513" />
+              <option name="buildTimestamp" value="1485857153399" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/source/netcracker/test-project">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-163.12024.16" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1490515329096" />
+              <option name="buildTimestamp" value="1485857159547" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/source/qatool">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-163.12024.16" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1494143189365" />
+              <option name="buildTimestamp" value="1485857119911" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/source/qatool/multyThreadTest">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-163.12024.16" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1486914264967" />
+              <option name="buildTimestamp" value="1485857114626" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/source/qatool/server">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-163.11103.6" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1486113416086" />
+              <option name="buildTimestamp" value="1484600618272" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/source/qatool/uploader">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-163.11103.6" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1486117755537" />
+              <option name="buildTimestamp" value="1484600618272" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/source/scripts">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-163.12024.16" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1489068288313" />
+              <option name="buildTimestamp" value="1485857138750" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="lastProjectLocation" value="$USER_HOME$/source/netcracker" />
+  </component>
+</application>

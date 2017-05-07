@@ -1,0 +1,50 @@
+<application>
+  <component name="UsageTrigger">
+    <counts>
+      <entry feature="CreateFile.CreateFileAction" count="8" />
+      <entry feature="StripeButton[Version Control].hidden" count="4" />
+      <entry feature="StripeButton[Version Control].shown" count="7" />
+      <entry feature="execute.Application.Debug" count="4" />
+      <entry feature="execute.Application.Run" count="149" />
+      <entry feature="execute.BashConfigurationType.Run" count="30" />
+      <entry feature="execute.BlazeCommandRunConfigurationType.Run" count="1" />
+      <entry feature="execute.GradleRunConfiguration.Debug" count="245" />
+      <entry feature="execute.GradleRunConfiguration.Run" count="233" />
+      <entry feature="execute.GroovyScriptRunConfiguration.Run" count="3" />
+      <entry feature="execute.JarApplication.Debug" count="143" />
+      <entry feature="execute.JarApplication.Run" count="620" />
+      <entry feature="execute.MavenRunConfiguration.Debug" count="2" />
+      <entry feature="execute.MavenRunConfiguration.Run" count="71" />
+      <entry feature="execute.SpringBootApplicationConfigurationType.Debug" count="4" />
+      <entry feature="execute.SpringBootApplicationConfigurationType.Run" count="16" />
+      <entry feature="execute.docker-deploy.Debug" count="4" />
+      <entry feature="execute.docker-deploy.Run" count="174" />
+      <entry feature="git.branch.checkout.local" count="6" />
+      <entry feature="ide.help.ideaInterface.editor" count="2" />
+      <entry feature="ide.help.reference.toolWindows.hierarchy" count="1" />
+      <entry feature="ide.help.viewingStructure.projectViews" count="1" />
+      <entry feature="ide.settings.Appearance" count="1" />
+      <entry feature="ide.settings.Auto_Import" count="1" />
+      <entry feature="ide.settings.Clouds" count="8" />
+      <entry feature="ide.settings.File_and_Code_Templates" count="1" />
+      <entry feature="ide.settings.Font" count="2" />
+      <entry feature="ide.settings.Inspections" count="1" />
+      <entry feature="ide.settings.JavaFX" count="2" />
+      <entry feature="ide.settings.Keymap" count="4" />
+      <entry feature="ide.settings.Live_Templates" count="4" />
+      <entry feature="ide.settings.Plugins" count="4" />
+      <entry feature="ide.settings.Project_Structure" count="2" />
+      <entry feature="ide.settings.SQL_Dialects" count="2" />
+      <entry feature="ide.settings.Version_Control" count="1" />
+      <entry feature="ideaapp.started" count="194" />
+      <entry feature="scene-builder.edit" count="3" />
+      <entry feature="scene-builder.open" count="9" />
+      <entry feature="spring.SpringConfigurationCheck.FileCount.java" count="65" />
+      <entry feature="spring.SpringConfigurationCheck.FileCount.xml" count="11" />
+      <entry feature="terminal.linux" count="7" />
+      <entry feature="welcome.screen.Blaze.ImportProject2" count="1" />
+      <entry feature="welcome.screen.WelcomeScreen.CreateNewProject" count="1" />
+      <entry feature="welcome.screen.WelcomeScreen.OpenProject" count="8" />
+    </counts>
+  </component>
+</application>
