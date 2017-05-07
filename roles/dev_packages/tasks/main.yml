@@ -41,7 +41,7 @@
  - name: Install gradle
    apt: name=gradle
 
- - name: Install postgres
+ - name: Install postgresql
    apt: name=postgresql
  - name: Change psql authentification method
    shell: sed -i '/local   all             postgres/c\local   all             postgres                                trust' /etc/postgresql/9.5/main/pg_hba.conf
@@ -58,7 +58,7 @@
    git: clone=yes repo=https://github.com/zsh-users/zsh-autosuggestions.git dest="{{ homedir }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
  - name: Install zsh-syntax-highligting plugin  
    git: clone=yes repo=https://github.com/zsh-users/zsh-syntax-highlighting.git dest="{{ homedir }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
- - name: Install Source Code Pro font
+ - name: Install Source Code Pro fonts
    copy: src="{{ playbook_dir }}/roles/dev_packages/resources/SourceCodeProFonts" dest="/usr/share/fonts"
  - name: Install powerline9k theme
    git: clone=yes repo=https://github.com/bhilburn/powerlevel9k.git dest="{{ homedir }}/.oh-my-zsh/custom/themes/powerlevel9k"  
