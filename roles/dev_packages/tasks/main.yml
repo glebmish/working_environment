@@ -46,6 +46,10 @@
  - name: Install oh-my-zsh
    shell: "{{ playbook_dir }}/roles/dev_packages/scripts/install-oh-my-zsh.sh {{ homedir }} {{ username }}" 
    changed_when: False
+ - name: Install zsh-autosuggestion plugin
+   git: clone=yes repo=https://github.com/zsh-users/zsh-autosuggestions.git dest="{{ homedir }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+ - name: Install zsh-syntax-highligting plugin  
+   git: clone=yes repo=https://github.com/zsh-users/zsh-syntax-highlighting.git dest="{{ homedir }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
  - name: Install Source Code Pro font
    copy: src="{{ playbook_dir }}/roles/dev_packages/resources/SourceCodeProFonts" dest="/usr/share/fonts"
  - name: Install powerline9k theme
