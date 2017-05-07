@@ -23,6 +23,9 @@
  - name: Update alternatives g++
    alternatives: name=g++ path=/usr/bin/g++-4.8 link=/usr/bin/g++
 
+ - name: Install cmake
+   apt: name=cmake
+
  - name: Add java repository
    apt_repository: repo=ppa:webupd8team/java
  - name: Agree with oracle license
