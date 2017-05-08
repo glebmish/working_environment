@@ -7,11 +7,13 @@
    copy: src="{{ homedir }}/.gitconfig" dest="{{ homedir }}/.gitconfig_old"
    when: (gitconfig_stat.stat.exists == True) and (gitconfig_stat.stat.islnk == False)
    register: backup_gitconfig_res
+   become_user: "{{ username }}"
  - name: Delete existing .gitconfig
    file: name="{{ homedir }}/.gitconfig" state=absent
    when: backup_gitconfig_res.changed
  - name: Link .gitconfig
    file: src="{{ playbook_dir }}/roles/configs/resources/.gitconfig" dest="{{ homedir }}/.gitconfig" state=link
+   become_user: "{{ username }}"
 
  - name: Get stat of existing .vimrc
    stat: path="{{ homedir }}/.vimrc"
@@ -20,11 +22,13 @@
    copy: src="{{ homedir }}/.vimrc" dest="{{ homedir }}/.vimrc_old"
    when: (vimrc_stat.stat.exists == True) and (vimrc_stat.stat.islnk == False)
    register: backup_vimrc_res
+   become_user: "{{ username }}"
  - name: Delete existing .vimrc
    file: name="{{ homedir }}/.vimrc" state=absent
    when: backup_vimrc_res.changed
  - name: Link .vimrc
    file: src="{{ playbook_dir }}/roles/configs/resources/.vimrc" dest="{{ homedir }}/.vimrc" state=link
+   become_user: "{{ username }}"
 
  - name: Get stat of existing .zshrc
    stat: path="{{ homedir }}/.zshrc"
@@ -33,15 +37,20 @@
    copy: src="{{ homedir }}/.zshrc" dest="{{ homedir }}/.zshrc_old"
    when: (zshrc_stat.stat.exists == True) and (zshrc_stat.stat.islnk == False)
    register: backup_zshrc_res
+   become_user: "{{ username }}"
  - name: Delete existing .zshrc
    file: name="{{ homedir }}/.zshrc" state=absent
    when: backup_zshrc_res.changed
  - name: Link .zshrc
    file: src="{{ playbook_dir }}/roles/configs/resources/.zshrc" dest="{{ homedir }}/.zshrc" state=link
+   become_user: "{{ username }}"
 
  - name: Make directory for Idea configs
    file: path="{{ homedir }}//.IntelliJIdeaConfig/" state=directory
+   become_user: "{{ username }}"
  - name: Link Idea configs 1/2
    file: src="{{ playbook_dir }}/roles/configs/resources/idea/options" dest="{{ homedir }}/.IntelliJIdeaConfig/options" state=link
+   become_user: "{{ username }}"
  - name: Link Idea configs 2/2
+   become_user: "{{ username }}"
    file: src="{{ playbook_dir }}/roles/configs/resources/idea/plugins" dest="{{ homedir }}/.IntelliJIdeaConfig/plugins" state=link

@@ -10,8 +10,10 @@
    apt: name=vim
  - name: Create directory for vim colors
    file: path="{{homedir}}/.vim/colors/" state=directory
+   become_user: "{{ username }}"
  - name: Install vim color scheme
    get_url: url=https://raw.githubusercontent.com/vim-scripts/256-jungle/master/colors/256-jungle.vim dest="{{ homedir }}/.vim/colors/256-jungle.vim"
+   become_user: "{{ username }}"
 
  - name: Install gcc-4.8
    apt: name=gcc-4.8
@@ -48,11 +50,10 @@
  - name: Change psql authentification method
    shell: sed -i '/local   all             postgres/c\local   all             postgres                                trust' /etc/postgresql/9.5/main/pg_hba.conf
    changed_when: False
-   register: chage_psql_conf_res
    when: install_postgresql_res.changed
  - name: Restart postgres service
    systemd: name=docker enabled=yes state=restarted
-   when: chage_psql_conf_res.changed
+   when: install_postgresql_res.changed
 
  - name: Install zsh
    apt: name=zsh
@@ -62,12 +63,15 @@
    changed_when: "install_omz_res.stdout == 'changed'"
  - name: Install zsh-autosuggestion plugin
    git: clone=yes repo=https://github.com/zsh-users/zsh-autosuggestions.git dest="{{ homedir }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions" update=no
+   become_user: "{{ username }}"
  - name: Install zsh-syntax-highligting plugin  
    git: clone=yes repo=https://github.com/zsh-users/zsh-syntax-highlighting.git dest="{{ homedir }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" update=no
+   become_user: "{{ username }}"
  - name: Install Source Code Pro fonts
    copy: src="{{ playbook_dir }}/roles/dev_packages/resources/SourceCodeProFonts" dest="/usr/share/fonts"
  - name: Install powerline9k theme
    git: clone=yes repo=https://github.com/bhilburn/powerlevel9k.git dest="{{ homedir }}/.oh-my-zsh/custom/themes/powerlevel9k" update=no
+   become_user: "{{ username }}"
  - name: Install docker deps 1/4
    apt: name=apt-transport-https
  - name: Install docker deps 2/4
@@ -94,12 +98,14 @@
    file: path=/usr/local/bin/docker-compose mode=777
  - name: Create directory for zsh completions
    file: path="{{homedir}}/.oh-my-zsh/completion/" state=directory
+   become_user: "{{ username }}"
  - name: Get docker-compose version
    shell: docker-compose version --short
    register: docker_compose_ver
    changed_when: False
  - name: Install docker-compose zsh autocompletion
    get_url: url="https://raw.githubusercontent.com/docker/compose/{{ docker_compose_ver.stdout }}/contrib/completion/zsh/_docker-compose" dest="{{ homedir }}/.oh-my-zsh/completion/_docker-compose"
+   become_user: "{{ username }}"
  
  - name: Add google repository key
    apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
@@ -114,9 +120,12 @@
 
  - name: Make directory for programs
    file: path="{{ homedir }}/Programs" state=directory
+   become_user: "{{ username }}"
  - name: Download Idea
    get_url: url=https://download.jetbrains.com/idea/ideaIU-2017.1.2.tar.gz dest="{{ homedir }}/Downloads/ideaIU-2017.1.2.tar.gz"
    register: download_idea_res
+   become_user: "{{ username }}"
  - name: Install Idea
    unarchive: src="{{ homedir }}/Downloads/ideaIU-2017.1.2.tar.gz" dest="{{ homedir }}/Programs/"
+   become_user: "{{ username }}"
    when: download_idea_res.changed
