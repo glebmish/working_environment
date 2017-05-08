@@ -49,10 +49,10 @@
    shell: sed -i '/local   all             postgres/c\local   all             postgres                                trust' /etc/postgresql/9.5/main/pg_hba.conf
    changed_when: False
    register: chage_psql_conf_res
-   when: "install_postgresql_res.changed == 'true'"
+   when: install_postgresql_res.changed
  - name: Restart postgres service
    systemd: name=docker enabled=yes state=restarted
-   when: "chage_psql_conf_res.changed == 'true'"
+   when: chage_psql_conf_res.changed
 
  - name: Install zsh
    apt: name=zsh
@@ -85,7 +85,7 @@
  - name: Create docker group
    group: name=docker state=present system=yes
  - name: Add user to docker group
-   user: name="{{ username }}" group=docker
+   user: name="{{ username }}" groups=docker append=yes
  - name: Enable docker to start on boot
    systemd: name=docker enabled=yes state=started
  - name: Install docker-compose
@@ -106,9 +106,11 @@
  - name: Add google repository
    apt_repository: repo="deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
    register: add_google_repo_res
+ - name: Update apt cache
+   apt: update_cache=yes
+   when: add_google_repo_res.changed
  - name: Install google chrome
-   apt: name=google-chrome-stable update_cache=yes
-   when: "add_google_repo_res.changed == 'true'"
+   apt: name=google-chrome-stable
 
  - name: Make directory for programs
    file: path="{{ homedir }}/Programs" state=directory
@@ -117,4 +119,4 @@
    register: download_idea_res
  - name: Install Idea
    unarchive: src="{{ homedir }}/Downloads/ideaIU-2017.1.2.tar.gz" dest="{{ homedir }}/Programs/"
-   when: "download_idea_res.changed == 'true'"
+   when: download_idea_res.changed
