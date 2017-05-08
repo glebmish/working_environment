@@ -51,8 +51,8 @@
    shell: sed -i '/local   all             postgres/c\local   all             postgres                                trust' /etc/postgresql/9.5/main/pg_hba.conf
    changed_when: False
    when: install_postgresql_res.changed
- - name: Restart postgres service
-   systemd: name=docker enabled=yes state=restarted
+ - name: Restart postgresql service
+   systemd: name=postgresql enabled=yes state=restarted
    when: install_postgresql_res.changed
 
  - name: Install zsh
