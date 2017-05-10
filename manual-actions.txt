@@ -8,3 +8,12 @@ Terminal -> Preferences -> Profiles -> Edit -> Custom font -> Source Code Pro Me
 choose config folder ~/.IntelliJIdeaConfig
 in idea: Tools -> Create cli; Tools -> Create desktop
 in idea: File -> Settings -> Editor -> Colors & Fonts -> Font -> Choose Fira Code and enable ligatures
+
+# disable keyring
+* In terminal: seahorse
+* Ensure Menu > View > By Keyring is ticked.
+* Right-click the Default keyring, and 'set as default'
+* Right-click the Defualt keyring and set its password as empty (only needed if you adopted an existing keyring)
+* In the 'Login' keyring, delete the network secret for your wifi.
+* Go to the network manager and add the network again - its secret should appear in the default keyring, which has no password.
+* Set the default keyring back to Login.
