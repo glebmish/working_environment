@@ -1,0 +1,50 @@
+---
+# Role to install docker
+ - name: Install docker deps 1/4
+   apt: name=apt-transport-https
+ 
+ - name: Install docker deps 2/4
+   apt:  name=ca-certificates
+ 
+ - name: Install docker deps 3/4
+   apt: name=curl
+ 
+ - name: Install docker deps 4/4
+   apt: name=software-properties-common
+ 
+ - name: Add docker PGP key
+   apt_key: url=https://download.docker.com/linux/ubuntu/gpg state=present
+ 
+ - name: Add docker repository
+   apt_repository: repo="deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ubuntu }}  stable"
+ 
+ - name: Install docker
+   apt: name=docker-ce
+ 
+ - name: Create docker group
+   group: name=docker state=present system=yes
+ 
+ - name: Add user to docker group
+   user: name="{{ username }}" groups=docker append=yes
+ 
+ - name: Enable docker to start on boot
+   systemd: name=docker enabled=yes state=started
+ 
+ - name: Install docker-compose
+   get_url: url=https://github.com/docker/compose/releases/download/1.12.0/docker-compose-Linux-x86_64 dest=/usr/local/bin/docker-compose
+ 
+ - name: Give execution permissions to binary
+   file: path=/usr/local/bin/docker-compose mode=777
+ 
+ - name: Create directory for zsh completions
+   become_user: "{{ username }}"
+   file: path="{{homedir}}/.oh-my-zsh/completion/" state=directory
+ 
+ - name: Get docker-compose version
+   shell: docker-compose version --short
+   changed_when: False
+   register: docker_compose_ver
+ 
+ - name: Install docker-compose zsh autocompletion
+   become_user: "{{ username }}"
+   get_url: url="https://raw.githubusercontent.com/docker/compose/{{ docker_compose_ver.stdout }}/contrib/completion/zsh/_docker-compose" dest="{{ homedir }}/.oh-my-zsh/completion/_docker-compose"

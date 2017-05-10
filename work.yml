@@ -1,5 +1,5 @@
 ---
-- name: Set up whole working environment on Ubuntu
+- name: Set up whole work working environment on Ubuntu
   hosts: localhost
   remote_user: root
   become: yes
@@ -10,5 +10,7 @@
     ubuntu: xenial
 
   roles:
-  - role: dev_packages
-  - role: configs
+  - role: common
+  - role: vim
+  - role: zsh
+  - role: chrome

@@ -1,0 +1,21 @@
+---
+# Role to install java, maven and gradle
+ - name: Add java repository
+   apt_repository: repo=ppa:webupd8team/java
+ 
+ - name: Agree with oracle license
+   shell: "{{ playbook_dir }}/roles/java/scripts/oracle-licence.sh oracle-java8-installer" 
+   register: oracle_license_res
+   changed_when: "oracle_license_res.stdout == 'changed'"
+ 
+ - name: Install java 8
+   apt: name=oracle-java8-installer
+ 
+ - name: Set java defaults
+   apt: name=oracle-java8-set-default
+
+ - name: Install maven
+   apt: name=maven
+ 
+ - name: Install gradle
+   apt: name=gradle

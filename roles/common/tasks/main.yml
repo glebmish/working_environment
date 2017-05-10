@@ -1,0 +1,25 @@
+---
+# Role for common packages and configs
+ - name: Install curl
+   apt: name=curl
+
+ - name: Install git
+   apt: name=git
+
+ - name: Get stat of existing .gitconfig
+   stat: path="{{ homedir }}/.gitconfig"
+   register: gitconfig_stat
+ 
+ - name: Backup existing .gitconfig
+   when: (gitconfig_stat.stat.exists == True) and (gitconfig_stat.stat.islnk == False)
+   become_user: "{{ username }}"
+   copy: src="{{ homedir }}/.gitconfig" dest="{{ homedir }}/.gitconfig_old"
+   register: backup_gitconfig_res
+ 
+ - name: Delete existing .gitconfig
+   when: backup_gitconfig_res.changed
+   file: name="{{ homedir }}/.gitconfig" state=absent
+ 
+ - name: Link .gitconfig
+   become_user: "{{ username }}"
+   file: src="{{ playbook_dir }}/roles/common/resources/.gitconfig" dest="{{ homedir }}/.gitconfig" state=link

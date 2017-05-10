@@ -1,0 +1,30 @@
+---
+# Role for vim and vim configs
+ - name: Install vim
+   apt: name=vim
+
+ - name: Create directory for vim colors
+   file: path="{{homedir}}/.vim/colors/" state=directory
+   become_user: "{{ username }}"
+ 
+ - name: Install vim color scheme
+   get_url: url=https://raw.githubusercontent.com/vim-scripts/256-jungle/master/colors/256-jungle.vim dest="{{ homedir }}/.vim/colors/256-jungle.vim"
+   become_user: "{{ username }}"
+
+ - name: Get stat of existing .vimrc
+   stat: path="{{ homedir }}/.vimrc"
+   register: vimrc_stat
+ 
+ - name: Backup existing .vimrc
+   copy: src="{{ homedir }}/.vimrc" dest="{{ homedir }}/.vimrc_old"
+   when: (vimrc_stat.stat.exists == True) and (vimrc_stat.stat.islnk == False)
+   register: backup_vimrc_res
+   become_user: "{{ username }}"
+ 
+ - name: Delete existing .vimrc
+   file: name="{{ homedir }}/.vimrc" state=absent
+   when: backup_vimrc_res.changed
+ 
+ - name: Link .vimrc
+   file: src="{{ playbook_dir }}/roles/vim/resources/.vimrc" dest="{{ homedir }}/.vimrc" state=link
+   become_user: "{{ username }}"

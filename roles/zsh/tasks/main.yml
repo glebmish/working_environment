@@ -1,0 +1,42 @@
+---
+# Role to install zsh and configs
+ - name: Install zsh
+   apt: name=zsh
+ 
+ - name: Install oh-my-zsh
+   shell: "{{ playbook_dir }}/roles/zsh/scripts/install-oh-my-zsh.sh {{ homedir }} {{ username }}" 
+   changed_when: "install_omz_res.stdout == 'changed'"
+   register: install_omz_res
+ 
+ - name: Install zsh-autosuggestion plugin
+   become_user: "{{ username }}"
+   git: clone=yes repo=https://github.com/zsh-users/zsh-autosuggestions.git dest="{{ homedir }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions" update=no
+ 
+ - name: Install zsh-syntax-highligting plugin  
+   become_user: "{{ username }}"
+   git: clone=yes repo=https://github.com/zsh-users/zsh-syntax-highlighting.git dest="{{ homedir }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" update=no
+ 
+ - name: Install Source Code Pro fonts
+   copy: src="{{ playbook_dir }}/roles/zsh/resources/SourceCodeProFonts" dest="/usr/share/fonts"
+ 
+ - name: Install powerline9k theme
+   become_user: "{{ username }}"
+   git: clone=yes repo=https://github.com/bhilburn/powerlevel9k.git dest="{{ homedir }}/.oh-my-zsh/custom/themes/powerlevel9k" update=no
+
+ - name: Get stat of existing .zshrc
+   stat: path="{{ homedir }}/.zshrc"
+   register: zshrc_stat
+ 
+ - name: Backup existing .zshrc
+   when: (zshrc_stat.stat.exists == True) and (zshrc_stat.stat.islnk == False)
+   become_user: "{{ username }}"
+   copy: src="{{ homedir }}/.zshrc" dest="{{ homedir }}/.zshrc_old"
+   register: backup_zshrc_res
+ 
+ - name: Delete existing .zshrc
+   when: backup_zshrc_res.changed
+   file: name="{{ homedir }}/.zshrc" state=absent
+ 
+ - name: Link .zshrc
+   become_user: "{{ username }}"   
+   file: src="{{ playbook_dir }}/roles/zsh/resources/.zshrc" dest="{{ homedir }}/.zshrc" state=link

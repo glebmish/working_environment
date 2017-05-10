@@ -1,0 +1,14 @@
+---
+# Role to install postgresql
+ - name: Install postgresql
+   apt: name=postgresql
+   register: install_postgresql_res
+ 
+ - name: Change psql authentification method
+   when: install_postgresql_res.changed
+   shell: sed -i '/local   all             postgres/c\local   all             postgres                                trust' /etc/postgresql/9.5/main/pg_hba.conf
+   changed_when: False
+ 
+ - name: Restart postgresql service
+   when: install_postgresql_res.changed
+   systemd: name=postgresql enabled=yes state=restarted
