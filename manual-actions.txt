@@ -7,3 +7,4 @@ Terminal -> Preferences -> Profiles -> Edit -> Custom font -> Source Code Pro Me
 # idea desktop and cli entries
 choose config folder ~/.IntelliJIdeaConfig
 in idea: Tools -> Create cli; Tools -> Create desktop
+in idea: File -> Settings -> Editor -> Colors & Fonts -> Font -> Choose Fira Code and enable ligatures
