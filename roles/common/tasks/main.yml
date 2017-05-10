@@ -1,5 +1,8 @@
 ---
 # Role for common packages and configs
+ - name: Update apt cache
+   apt: update_cache=yes
+
  - name: Install curl
    apt: name=curl
 
