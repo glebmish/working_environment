@@ -129,3 +129,10 @@
    unarchive: src="{{ homedir }}/Downloads/ideaIU-2017.1.2.tar.gz" dest="{{ homedir }}/Programs/"
    become_user: "{{ username }}"
    when: download_idea_res.changed
+
+ - name: Download Slack
+   get_url: url="https://downloads.slack-edge.com/linux_releases/slack-desktop-2.6.0-amd64.deb" dest="{{ homedir }}/Downloads/slack-desktop-2.6.0-amd64.deb"
+   register: download_slack_res
+ - name: Install slack
+   apt: deb="{{ homedir }}/Downloads/slack-desktop-2.6.0-amd64.deb"
+   when: download_slack_res.changed
