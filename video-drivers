@@ -1,0 +1,10 @@
+sudo apt-get update
+sudo apt-get purge nvidia*
+sudo apt-get install linux-generic-lts-xenial
+sudo apt-get install linux-headers-4.8
+sudo apt-get install nvidia-375
+#sudo nvidia-xconfig
+#sudo nvidia-settings -> PowerMizer -> Preffered mode -> Prefer maximum perfomance
+
+lshw -c video
+https://help.ubuntu.com/community/BinaryDriverHowto/Nvidia
