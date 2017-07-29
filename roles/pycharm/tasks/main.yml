@@ -4,12 +4,12 @@
    become_user: "{{ username }}"
    file: path="{{ homedir }}/Programs" state=directory
  
- - name: Download Idea
+ - name: Download pyCharm
    become_user: "{{ username }}"
-   get_url: url=https://download.jetbrains.com/idea/ideaIC-2017.2.tar.gz dest="{{ homedir }}/Downloads/ideaIU-2017.2.tar.gz"
+   get_url: url=https://download.jetbrains.com/python/pycharm-community-2017.2.tar.gz dest="{{ homedir }}/Downloads/pycharm-community-2017.2.tar.gz"
    register: download_idea_res
  
  - name: Install Idea
    when: download_idea_res.changed
    become_user: "{{ username }}"
-   unarchive: src="{{ homedir }}/Downloads/ideaIU-2017.2.tar.gz" dest="{{ homedir }}/Programs/"
+   unarchive: src="{{ homedir }}/Downloads/pycharm-community-2017.2.tar.gz" dest="{{ homedir }}/Programs/"

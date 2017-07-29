@@ -1,0 +1,27 @@
+---
+- name: Set up whole personal working environment on Ubuntu
+  hosts: localhost
+  remote_user: root
+  become: yes
+  become_method: sudo
+  vars:
+    homedir: /home/gleb
+    username: gleb
+    ubuntu: xenial
+
+  roles:
+  - role: common
+  
+  - role: vim
+  - role: zsh
+  - role: docker
+  - role: java
+
+  - role: cpp
+  - role: postgresql
+  
+  - role: chrome
+  - role: idea
+  - role: clion
+  - role: pycharm
+  - role: slack
