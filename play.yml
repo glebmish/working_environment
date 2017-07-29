@@ -24,4 +24,9 @@
   - role: idea
   - role: clion
   - role: pycharm
+  - role: sublime
+  - role: simplenote
   - role: slack
+
+  - role: adapta-theme
+  - role: paper-icons

@@ -1,0 +1,12 @@
+---
+# Role to install adapta unity theme
+ - name: Add sublime repository
+   apt_repository: repo="ppa:webupd8team/sublime-text-3"
+   register: add_sublime_repo_yes
+
+ - name: Update apt cache
+   when: add_sublime_repo_yes.changed
+   apt: update_cache=yes
+
+ - name: Install sublime
+   apt: name=sublime-text-installer

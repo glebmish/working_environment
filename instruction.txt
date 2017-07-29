@@ -1,3 +1,11 @@
+# run run.sh
+./run.sh
+
+# update versions in ansible tasks (for example version of intellijIdea)
+
+# run ansible playbook
+ansible-playbook play.yml --ask-sudo-pass
+
 # set zsh as default shell
 chsh -s /bin/zsh
 
@@ -17,3 +25,23 @@ in idea: File -> Settings -> Editor -> Colors & Fonts -> Font -> Choose Fira Cod
 * In the 'Login' keyring, delete the network secret for your wifi.
 * Go to the network manager and add the network again - its secret should appear in the default keyring, which has no password.
 * Set the default keyring back to Login.
+
+# install drivers 
+* System settings -> software and updates -> additional drivers -> choose nvidia-375 and processor proprietary drivers
+
+# Unity tweak tool settinga
+* Launcher -> Auto-hide = enable
+           -> Auto-hide animation = fade and slide
+           -> Reveal sensitivity = in the middle
+           -> Minimize on click = enable
+* Switcher -> Displat show desktop = disable
+* Theme -> Adapta
+* Icons -> Paper
+* Cursors -> Paper
+
+# Install todoist and clean calendar chrome apps
+
+# Make bigger grub font
+sudo grub-mkfont --output=/boot/grub/fonts/DejaVuSansMono24.pf2 --size=24 /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
+GRUB_FONT=/boot/grub/fonts/DejaVuSansMono24.pf2
+sudo update-grub

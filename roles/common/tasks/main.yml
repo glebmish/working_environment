@@ -3,6 +3,9 @@
  - name: Update apt cache
    apt: update_cache=yes
 
+ - name: Install unity tweak tool
+   apt: name=unity-tweak-tool
+
  - name: Install curl
    apt: name=curl
 
@@ -26,3 +29,12 @@
  - name: Link .gitconfig
    become_user: "{{ username }}"
    file: src="{{ playbook_dir }}/roles/common/resources/.gitconfig" dest="{{ homedir }}/.gitconfig" state=link
+
+ - name: Install zlib1g-dev package
+   apt: name=zlib1g-dev
+
+ - name: Install python-dev package
+   apt: name=python-dev
+
+ - name: Install shutter
+   apt: name=shutter

@@ -1,0 +1,15 @@
+---
+# Role to install paper icons
+ - name: Add paper repository
+   apt_repository: repo="ppa:snwh/pulp"
+   register: add_paper_repo_yes
+
+ - name: Update apt cache
+   when: add_paper_repo_yes.changed
+   apt: update_cache=yes
+
+ - name: Install paper icons
+   apt: name=paper-icon-theme
+
+ - name: Install paper cursors
+   apt: name=paper-cursor-theme
