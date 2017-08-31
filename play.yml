@@ -27,6 +27,7 @@
   - role: sublime
   - role: simplenote
   - role: slack
+  - role: spotify
 
   - role: adapta-theme
   - role: paper-icons

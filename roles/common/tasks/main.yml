@@ -36,5 +36,11 @@
  - name: Install python-dev package
    apt: name=python-dev
 
+ - name: Install libboost-all-dev
+   apt: name=libboost-all-dev
+
  - name: Install shutter
    apt: name=shutter
+
+ - name: Install vlc
+   apt: name=vlc

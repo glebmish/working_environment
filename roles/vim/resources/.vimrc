@@ -15,6 +15,10 @@ set wrap
 set t_Co=256
 colorscheme 256-jungle
 
+" search result highlight
+set hlsearch
+hi Search cterm=NONE guifg=grey ctermbg=blue 
+
 " map tab navigation
 map <C-Right> :tabn<CR>
 map <C-Left> :tabp<CR>

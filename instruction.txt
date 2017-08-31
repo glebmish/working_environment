@@ -34,7 +34,8 @@ in idea: File -> Settings -> Editor -> Colors & Fonts -> Font -> Choose Fira Cod
            -> Auto-hide animation = fade and slide
            -> Reveal sensitivity = in the middle
            -> Minimize on click = enable
-* Switcher -> Displat show desktop = disable
+           -> Show desktop icon = enable
+* Switcher -> Display show desktop = disable
 * Theme -> Adapta
 * Icons -> Paper
 * Cursors -> Paper
@@ -43,5 +44,8 @@ in idea: File -> Settings -> Editor -> Colors & Fonts -> Font -> Choose Fira Cod
 
 # Make bigger grub font
 sudo grub-mkfont --output=/boot/grub/fonts/DejaVuSansMono24.pf2 --size=24 /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
-GRUB_FONT=/boot/grub/fonts/DejaVuSansMono24.pf2
+in /etc/default/grub add: GRUB_FONT=/boot/grub/fonts/DejaVuSansMono24.pf2
 sudo update-grub
+
+# Enable native notifications in chrome
+chrome -> chrome://flags/#enable-native-notifications -> enable
