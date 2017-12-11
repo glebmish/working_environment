@@ -1,0 +1,18 @@
+---
+# Role to install adapta unity theme
+ - name: Add spotify repo key 1/2
+   apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=BBEBDCB318AD50EC6865090613B00F1FD2C19886 state=present
+  
+ - name: Add spotify repo key 2/2
+   apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=0DF731E45CE24F27EEEB1450EFDC8610341D9410 state=present
+
+ - name: Add spotify repository
+   apt_repository: repo="deb http://repository.spotify.com stable non-free"
+   register: add_spotify_repo_yes
+
+ - name: Update apt cache
+   when: add_spotify_repo_yes.changed
+   apt: update_cache=yes
+
+ - name: Install spotify
+   apt: name=spotify-client

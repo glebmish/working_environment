@@ -83,3 +83,6 @@ alias fixsc="xrandr --output eDP1 -s 2880x1620"
 
 # exit like in vim
 alias :q="exit"
+
+# open directory in file browser
+alias opendir='f() { if [[ "$#" -eq 0 ]]; then dir=$(pwd); else dir="$1"; fi; nautilus --browser "$dir" 2>/dev/null >/dev/null & };f'

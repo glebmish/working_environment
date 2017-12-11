@@ -42,3 +42,5 @@
     s = status
     c = checkout
     cam = commit --amend
+    cm = commit -m
+    pnew = !git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
