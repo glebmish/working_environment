@@ -11,6 +11,19 @@
    get_url: url=https://raw.githubusercontent.com/vim-scripts/256-jungle/master/colors/256-jungle.vim dest="{{ homedir }}/.vim/colors/256-jungle.vim"
    become_user: "{{ username }}"
 
+ - name: Create directory for vim bundles
+   file: path="{{homedir}}/.vim/bundle/" state=directory
+   become_user: "{{ username }}"
+
+ - name: Create directory for VundleVim
+   file: path="{{homedir}}/.vim/bundle/Vundle.vim" state=directory
+   become_user: "{{ username }}"
+
+ - name: Download Vundle.vim
+   git: repo=https://github.com/VundleVim/Vundle.vim.git
+        dest="{{homedir}}/.vim/bundle/Vundle.vim/"
+   become_user: "{{ username }}"
+
  - name: Get stat of existing .vimrc
    stat: path="{{ homedir }}/.vimrc"
    register: vimrc_stat
