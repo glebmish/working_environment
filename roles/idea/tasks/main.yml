@@ -6,10 +6,10 @@
  
  - name: Download Idea
    become_user: "{{ username }}"
-   get_url: url=https://download.jetbrains.com/idea/ideaIC-2017.2.tar.gz dest="{{ homedir }}/Downloads/ideaIU-2017.2.tar.gz"
+   get_url: url=https://download.jetbrains.com/idea/ideaIC-2018.1.6.tar.gz dest="{{ homedir }}/Downloads/ideaIC-2018.1.6.tar.gz"
    register: download_idea_res
  
  - name: Install Idea
    when: download_idea_res.changed
    become_user: "{{ username }}"
-   unarchive: src="{{ homedir }}/Downloads/ideaIU-2017.2.tar.gz" dest="{{ homedir }}/Programs/"
+   unarchive: src="{{ homedir }}/Downloads/ideaIC-2018.1.6.tar.gz" dest="{{ homedir }}/Programs/"
