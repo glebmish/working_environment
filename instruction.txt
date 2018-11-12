@@ -13,7 +13,7 @@ ansible-playbook play.yml --ask-sudo-pass
 chsh -s /bin/zsh
 
 # set source code pro font in terminal
-Terminal -> Preferences -> Profiles -> Edit -> Custom font -> Source Code Pro Medium
+Edit -> Preferences -> Custom font -> Source Code Pro Medium
 
 # idea desktop and cli entries
 choose config folder ~/.IntelliJIdeaConfig
@@ -30,16 +30,17 @@ in idea: File -> Settings -> Editor -> Colors & Fonts -> Font -> Choose Fira Cod
 * Set the default keyring back to Login.
 
 # install drivers 
-* System settings -> software and updates -> additional drivers -> choose nvidia-375 and processor proprietary drivers
+$ ubuntu-drivers devices
+$ sudo ubuntu-drivers autoinstall
 
-# Unity tweak tool settinga
-* Launcher -> Auto-hide = enable
-           -> Auto-hide animation = fade and slide
-           -> Reveal sensitivity = in the middle
-           -> Minimize on click = enable
-           -> Show desktop icon = enable
-* Switcher -> Display show desktop = disable
-* Theme -> Adapta
+# Ubuntu settings
+Dock -> Auto-hide dock = enable
+Sound -> Sound effects -> off
+Devices -> Keyboard -> Launch terminal -> set shortcut Alt + F1
+
+# Tweaks tool settings
+Keyboard & Mouse -> Additional Layout Options -> Expand Switching to another layout -> Turn on Shift + Alt
+* Theme -> Matcha-dark-azul
 * Icons -> Paper
 * Cursors -> Paper
 
