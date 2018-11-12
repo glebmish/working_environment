@@ -1,0 +1,7 @@
+---
+# Role to install paper icons
+ - name: Add paper repository
+   apt_repository: repo="ppa:papirus/papirus"
+
+ - name: Install paper icons
+   apt: name=papirus-icon-theme

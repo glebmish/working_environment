@@ -1,0 +1,8 @@
+---
+# Role for matcha theme on GTK
+ - name: Add theme repo
+   apt_repository: repo="ppa:ryu0/aesthetics" state=present
+
+ - name: Install theme
+   apt: name=matcha-theme
+

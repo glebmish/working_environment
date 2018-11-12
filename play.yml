@@ -22,3 +22,6 @@
 
   - role: chrome
   - role: spotify
+
+  - role: matcha-theme
+  - role: papirus-icons
