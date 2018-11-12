@@ -1,10 +1,10 @@
 ---
 # Role for common packages and configs
- - name: Update apt cache
-   apt: update_cache=yes
+ - name: Add universe repo
+   apt_repository: repo="deb http://archive.ubuntu.com/ubuntu bionic universe" state=present
 
- - name: Install unity tweak tool
-   apt: name=unity-tweak-tool
+ - name: Install gnome tweak tool
+   apt: name=gnome-tweak-tool
 
  - name: Install curl
    apt: name=curl
@@ -29,9 +29,6 @@
  - name: Link .gitconfig
    become_user: "{{ username }}"
    file: src="{{ playbook_dir }}/roles/common/resources/.gitconfig" dest="{{ homedir }}/.gitconfig" state=link
-
- - name: Install zlib1g-dev package
-   apt: name=zlib1g-dev
 
  - name: Install python-dev package
    apt: name=python-dev
