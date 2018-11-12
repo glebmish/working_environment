@@ -1,3 +1,6 @@
+# upgrade all packages (optional)
+sudo apt upgrade
+
 # run run.sh
 ./run.sh
 

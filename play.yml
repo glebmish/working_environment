@@ -11,23 +11,14 @@
 
   roles:
   - role: common
-  
+
   - role: vim
   - role: zsh
   - role: docker
   - role: java
 
-  - role: cpp
-  - role: postgresql
-  
-  - role: chrome
   - role: idea
-  - role: clion
   - role: pycharm
-  - role: sublime
-  - role: simplenote
-  - role: slack
-  - role: spotify
 
-  - role: adapta-theme
-  - role: paper-icons
+  - role: chrome
+  - role: spotify
