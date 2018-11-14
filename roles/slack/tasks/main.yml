@@ -1,9 +1,0 @@
----
-# Role to install slack
- - name: Download Slack
-   get_url: url="https://downloads.slack-edge.com/linux_releases/slack-desktop-2.6.0-amd64.deb" dest="{{ homedir }}/Downloads/slack-desktop-2.6.0-amd64.deb"
-   register: download_slack_res
- 
- - name: Install slack
-   when: download_slack_res.changed
-   apt: deb="{{ homedir }}/Downloads/slack-desktop-2.6.0-amd64.deb"
